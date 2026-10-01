@@ -1,0 +1,6 @@
+{
+    "aliases": {
+        "library": "./library",
+        "root": "./library/iridium"
+    }
+}
