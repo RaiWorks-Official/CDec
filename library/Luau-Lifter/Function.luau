@@ -716,14 +716,6 @@ function Function:NewClosure(i, instruction)
 end
 
 function Function:CaptureClosure(i, instruction, child)
-	return self:CaptureClosure(i, instruction, self.Proto.Protos[instruction.D + 1])
-end
-
-function Function:CaptureClosure(i, instruction, child)
-	return self:CaptureClosure(i, instruction, self.Proto.Protos[instruction.D + 1])
-end
-
-function Function:CaptureClosure(i, instruction, child)
 	local count = child.UpvalueCount
 	local names = {}
 
