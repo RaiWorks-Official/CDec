@@ -833,6 +833,18 @@ function Function:Merge(last, stop, skip, target, first_target, first)
 		cursor = self:Exec(cursor)
 	end
 
+	local live = info.LiveIn[info.Target[n]] or {}
+
+	for position = last + 1, n - 1 do
+		for _, register in ipairs(info.Writes[position]) do
+			if live[register] then
+				self:Restore(snapshot)
+
+				return nil
+			end
+		end
+	end
+
 	local other = instructions.Condition(self, n, info.List[n])
 	local candidate = info.Target[n]
 
