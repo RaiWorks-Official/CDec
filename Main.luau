@@ -14,7 +14,7 @@
 local Analyze = require("./src/Analyze")
 
 -- May have to improve Lifter
-decompile = function(script)
+getgenv().decompile = function(script)
   local getbc = _G.getscriptbytecode or getscriptbytecode or function(bc) return bc end
   local bytecode = getbc(script) or nil
   return Analyze(bytecode or script)
