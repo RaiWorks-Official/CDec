@@ -308,7 +308,7 @@ function Proto.new(Bytecode: Buffer.BufferReader, Deserializer, EncodingKey: num
     end
 
     if ProtoEnd then
-        Bytecode.Offset = ProtoEnd
+        Bytecode:seek(ProtoEnd - Bytecode.Offset)
     end
 
 	return self

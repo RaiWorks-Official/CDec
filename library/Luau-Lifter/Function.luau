@@ -712,7 +712,18 @@ function Function:BuildChild(proto, captures)
 end
 
 function Function:NewClosure(i, instruction)
-	local child = self.Proto.Protos[instruction.D + 1]
+	return self:CaptureClosure(i, instruction, self.Proto.Protos[instruction.D + 1])
+end
+
+function Function:CaptureClosure(i, instruction, child)
+	return self:CaptureClosure(i, instruction, self.Proto.Protos[instruction.D + 1])
+end
+
+function Function:CaptureClosure(i, instruction, child)
+	return self:CaptureClosure(i, instruction, self.Proto.Protos[instruction.D + 1])
+end
+
+function Function:CaptureClosure(i, instruction, child)
 	local count = child.UpvalueCount
 	local names = {}
 
@@ -741,7 +752,7 @@ function Function:DupClosure(i, instruction)
 	local constant = self.Constants:Raw(instruction.D)
 	local child = self.Context.Deserialized.Protos[constant.Value + 1]
 
-	self:Define(i, instruction.A, self:BuildChild(child, {}))
+	return self:CaptureClosure(i, instruction, child)
 end
 
 function Function:AsExpression()

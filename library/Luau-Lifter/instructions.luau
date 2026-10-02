@@ -542,7 +542,7 @@ handler("LOP_NEWCLOSURE", function(F, i, instruction)
 end)
 
 handler("LOP_DUPCLOSURE", function(F, i, instruction)
-	F:DupClosure(i, instruction)
+	return F:DupClosure(i, instruction)
 end)
 
 handler("LOP_NEWCLASSMEMBER", function(F, i, instruction)
