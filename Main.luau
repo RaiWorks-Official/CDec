@@ -14,12 +14,9 @@
 local Analyze = require("./src/Analyze")
 
 -- May have to improve Lifter
+getgenv = getgenv or function() return _G end
 getgenv().decompile = function(script)
-<<<<<<< HEAD
   local getbc = _G.getscriptbytecode or getscriptbytecode or function(bc) return bc end
-=======
-  local getbc = getgenv().getscriptbytecode or getscriptbytecode or function(bc) return bc end
->>>>>>> c142da7 (Lifter wiring, debug local names, bytecode v13 support, README)
   local bytecode = getbc(script) or nil
   return Analyze(bytecode or script)
 end
