@@ -463,5 +463,5 @@ return function(bytecode)
     return format_header(elapsed, version, ":)") .. result
   end
 
-  return format_header(elapsed, version, ":(") .. "-- Failed :<"
+  return format_header(elapsed, version, ":(") .. "-- Failed :<\n-- " .. tostring(result)
 end

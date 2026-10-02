@@ -190,6 +190,12 @@ end
     the proto yet — Bytecode.Offset is at the proto's first byte on entry.
 ]=]
 local function SkipProto(Bytecode: Buffer.BufferReader, Version: number)
+    if Version >= 13 then
+        Bytecode:seek(Bytecode:ReadVarInt())
+
+        return
+    end
+
     Bytecode:seek(4)
 
     if Version >= 4 then
@@ -332,6 +338,10 @@ local function ProbeEntryFirstInstruction(Bytecode: Buffer.BufferReader): number
         end
 
         Bytecode:seek(Starts[MainId + 1] - Bytecode.Offset)
+
+        if Version >= 13 then
+            Bytecode:ReadVarInt()
+        end
 
         Bytecode:seek(4)
 

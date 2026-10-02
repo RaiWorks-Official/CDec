@@ -40,6 +40,14 @@ function Proto.new(Bytecode: Buffer.BufferReader, Deserializer, EncodingKey: num
 	local self = setmetatable({}, Proto)
     self.Main = false
 
+    local ProtoEnd = nil
+
+    if Deserializer.BytecodeVersion >= 13 then
+        local ProtoLength = Bytecode:ReadVarInt()
+
+        ProtoEnd = Bytecode.Offset + ProtoLength
+    end
+
     -- Function Header
 
     self.MaxStackSize = Bytecode:readu8()
@@ -297,6 +305,10 @@ function Proto.new(Bytecode: Buffer.BufferReader, Deserializer, EncodingKey: num
                 Pc = Bytecode:ReadVarInt()
             }
         end
+    end
+
+    if ProtoEnd then
+        Bytecode.Offset = ProtoEnd
     end
 
 	return self

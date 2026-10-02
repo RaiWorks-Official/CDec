@@ -389,7 +389,7 @@ local LuauOpcode = {
 
 local LuauBytecodeTag = {
     LBC_VERSION_MIN = 3,
-    LBC_VERSION_MAX = 11,
+    LBC_VERSION_MAX = 13,
     LBC_VERSION_TARGET = 6,
 
     LBC_TYPE_VERSION_MIN = 1,
