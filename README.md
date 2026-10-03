@@ -40,6 +40,6 @@ lune run Example.luau <Input>
 ```
 
 ## Notes
-- Lifter isnt finished, so without waiting for my update
+- Lifter isnt finished
 - This was made with Claude Sonnet 5.5 Assistance so no need to investagate if this was vibecoded
 ### This is only for educational purposes only. i do not promote malicious or unethical use of this 
