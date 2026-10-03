@@ -3,9 +3,7 @@
 --Main.luau
 
 --[[
-  feel free to give credits or not idk. your choice
-
-  This is a decent one, we are planning to make a better one but will make it paid
+  Idk if this thing is good, decent, mid nor bad it's up to you, we are planning to make a better one but will make it paid
 
   thanks for ActualMasterOogway for the deserializer (iridium)
   look at the repo: https://github.com/ActualMasterOogway/Iridium
